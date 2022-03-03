@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "ce7d2e68-c192-4a1d-909d-747e98edcfab"
+        },
+        "name": {
+            "value": "greeting-app"
+        },
+        "location": {
+            "value": "West Europe"
+        },
+        "hostingPlanName": {
+            "value": "ASP-CreatingWebApps-bc56"
+        },
+        "serverFarmResourceGroup": {
+            "value": "Creating-Web-Apps"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "sku": {
+            "value": "Basic"
+        },
+        "skuCode": {
+            "value": "B1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "linuxFxVersion": {
+            "value": "JAVA|11-java11"
+        }
+    }
+}
