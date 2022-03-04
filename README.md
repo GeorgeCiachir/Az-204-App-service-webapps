@@ -111,3 +111,32 @@
   - Import the certificate into App Service
   - Manage the certificate, such as renew, rekey, and export it
 
+## Scale apps in Azure App Service
+- Manual 
+- Autoscaling: 
+  - can be configured in Settings/Scale out 
+  - based on:
+    - a metric, such as CPU utilization
+    - according to a schedule, in a specific interval
+  - provides elasticity for your services
+  - improves availability and fault tolerance
+  - works by adding or removing web servers
+  - isn't the best approach to handling long-term growth
+
+- Scale up/down (vertical)
+- Scale out/in (horizontal)
+
+## Metrics for autoscale rules
+- **The rules are evaluated across all instances**
+- **Consider defining autoscale rules in pairs in the same autoscale condition**- 
+- **CPU Percentage** - This metric is an indication of the CPU utilization across all instances. A high value shows that instances are becoming CPU-bound, which could cause delays in processing client requests.
+- **Memory Percentage** - This metric captures the memory occupancy of the application across all instances. A high value indicates that free memory could be running low, and could cause one or more instances to fail.
+- **Disk Queue Length** - This metric is a measure of the number of outstanding I/O requests across all instances. A high value means that disk contention could be occurring.
+- **Http Queue Length** - This metric shows how many client requests are waiting for processing by the web app. If this number is large, client requests might fail with HTTP 408 (Timeout) errors.
+- **Data In** - This metric is the number of bytes received across all instances.
+- **Data Out** - This metric is the number of bytes sent by all instances.
+
+## Combining autoscale rules
+- A single autoscale condition can contain several autoscale rules
+- When scaling out, the autoscale action will be performed if **any** of the scale-out rules are met. It works on an **or** basis
+- When scaling in, the autoscale action will run only if **all** of the scale-in rules are met. It works on an **and** basis
