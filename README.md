@@ -39,13 +39,6 @@
   - If you have multiple deployment slots for an app, all deployment slots also run on the same VM instances.
   - If you enable diagnostic logs, perform backups, or run WebJobs, they also use CPU cycles and memory on these VM instances.
 
-## Secure a domain with SSL/TLS binding
-- cannot be done for the Free and Shared tiers
-- can use public(bought from an authority) and private(self-signed) certificates
-- Managed certificate -> one that is provided and managed by Azure
-- Un-managed certificate -> one that is provided by me (public or private)
-- can enforce HTTPS and TLS versions
-
 ## Authentication and authorization in App Service
 - not mandatory to be used
 - it is a separate module, that runs next to my deployment, and essentially acts like a proxy
@@ -88,3 +81,33 @@
 
 ## Adding logs
 - in the Monitoring section, select App Service logs and enable application logging
+
+## Secure a domain with SSL/TLS binding
+- cannot be done for the Free and Shared tiers
+- can use public(bought from an authority) and private(self-signed) certificates
+- Managed certificate -> one that is provided and managed by Azure
+- Un-managed certificate -> one that is provided by me (public or private)
+- can enforce HTTPS and TLS versions
+
+## Configure security certificates
+**Create a free App Service managed certificate** - A private certificate that's free of charge and easy to use if you just need to secure your custom domain in App Service.
+**Purchase/Import an App Service certificate**	- A private certificate that's managed by Azure. It combines the simplicity of automated certificate management and the flexibility of renewal and export options.
+**Import a certificate from Key Vault**	- Useful if you use Azure Key Vault to manage your certificates.
+**Upload a private certificate** - If you already have a private certificate from a third-party provider, you can upload it.
+**Upload a public certificate**	- Public certificates are not used to secure custom domains, but you can load them into your code if you need them to access remote resources.
+
+## Creating a free managed certificate
+- App Service plan must be in the Basic, Standard, Premium, or Isolated
+- You create the certificate and bind it to a custom domain, and let App Service do the rest
+
+# Purchase/Import an App Service Certificate
+- If you purchase an App Service Certificate from Azure, Azure manages the following tasks:
+  - Takes care of the purchase process from GoDaddy
+  - Performs domain verification of the certificate
+  - Maintains the certificate in Azure Key Vault
+  - Manages certificate renewal
+  - Synchronize the certificate automatically with the imported copies in App Service apps
+- If you already have a working App Service certificate, you can:
+  - Import the certificate into App Service
+  - Manage the certificate, such as renew, rekey, and export it
+
