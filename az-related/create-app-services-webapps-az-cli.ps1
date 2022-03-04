@@ -37,3 +37,9 @@ az webapp create `
     --plan $appName `
     --name $appName `
     --runtime "JAVA:11-java11"
+
+
+# retrieve stream application log
+az webapp log tail `
+    --name $appName `
+    --resource-group $resourceGroup

@@ -69,3 +69,22 @@
   - This option will reject any unauthenticated traffic to your application
   - This rejection can be a redirect action to one of the configured identity providers
 
+## Adding volumes
+- we need to have a preconfigured storage account with the necessary file shares
+- we can mount the volumes in the Configuration menu, under **Path mappings**
+
+
+## Configure application settings
+- in the portal they can be changed in the Configuration menu, under **Settings**
+- for dotNet apps, these are environment variables
+- connection strings can also be configured here (such as connections to the DB). Connection strings also act as environment settings
+  The reason you might want to use connection strings (especially in non-dotNET languages):
+  - is that some Azure database types are backed up along with the app only if you configure a connection string for the database 
+    in your App Service app. Essentially, the connection string acts as a declaration required by the DB, so it can recognize a certain application
+  - Java apps for example, cannot read environment variables from the "application-settings" and need them to be set 
+    as "connection strings", but instead of selecting a particular DB, just select "custom"
+ 
+![img.png](img.png)
+
+## Adding logs
+- in the Monitoring section, select App Service logs and enable application logging
