@@ -46,3 +46,26 @@
 - Un-managed certificate -> one that is provided by me (public or private)
 - can enforce HTTPS and TLS versions
 
+## Authentication and authorization in App Service
+- not mandatory to be used
+- it is a separate module, that runs next to my deployment, and essentially acts like a proxy
+- supports major identity providers (AAD, Facebook, Google, Twitter, any OIDC provider)
+
+## Authentication flow
+- **Without provider SDK**: The application delegates sign-in to App Service. This is typically the case with browser apps, which can present the provider's login page to the user. 
+  The server code manages the sign-in process, so it is also called **server-directed flow** or **server flow**
+- **With provider SDK**: The application signs users in to the provider manually and then submits the authentication token to App Service for validation
+  This is typically the case with browser-less apps, which can't present the provider's sign-in page to the user
+  The application code manages the sign-in process, so it is also called **client-directed flow** or **client flow**.
+  This applies to:
+  - REST APIs
+  - Azure Functions
+  - JavaScript browser clients
+  - native mobile apps that sign users in using the provider's SDK
+
+## Authorization behavior
+- **Allow unauthenticated requests**: This option defers authorization of unauthenticated traffic to your application code
+- **Require authentication**: 
+  - This option will reject any unauthenticated traffic to your application
+  - This rejection can be a redirect action to one of the configured identity providers
+
