@@ -13,7 +13,7 @@
 - If the plan is configured for autoscaling, then all apps in the plan are scaled out together based on the autoscale settings
 
 ## App Service plans - Types
-# Non-isolated
+### Non-isolated
 - **Shared compute**
   - Both Free and Shared share the resource pools of your apps with the apps of other customers. 
     Essentially, my app runs in the same VM with other apps from other clients
@@ -23,12 +23,12 @@
   - PremiumV2 (P1v2, P2v2, P3v2)
   - PremiumV3 (P1v3, P2v3, P3v3)
 
-# Isolated
+### Isolated
 - Fully isolated and dedicated environment (dedicated Azure VMs on dedicated Azure Virtual Networks)
 - Isolation and secure network access
 - High scale, high memory utilization
 
-# Consumption
+### Consumption
 - This tier is only available to function apps. It scales the functions dynamically depending on workload.
 
 ## How does my app run and scale
@@ -98,7 +98,7 @@
 - App Service plan must be in the Basic, Standard, Premium, or Isolated
 - You create the certificate and bind it to a custom domain, and let App Service do the rest
 
-# Purchase/Import an App Service Certificate
+## Purchase/Import an App Service Certificate
 - If you purchase an App Service Certificate from Azure, Azure manages the following tasks:
   - Takes care of the purchase process from GoDaddy
   - Performs domain verification of the certificate
