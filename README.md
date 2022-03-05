@@ -138,3 +138,39 @@
 - A single autoscale condition can contain several autoscale rules
 - When scaling out, the autoscale action will be performed if **any** of the scale-out rules are met. It works on an **or** basis
 - When scaling in, the autoscale action will run only if **all** of the scale-in rules are met. It works on an **and** basis
+
+## Explore staging environments
+- For Standard, Premium, or Isolated App Service plan tier
+- Deployment slots are live apps with their own host names
+- App content and configurations elements can be swapped between two deployment slots, including the production slot
+- Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your app
+- The traffic redirection is seamless, and no requests are dropped because of swap operations
+- You can automate this entire workflow by configuring auto swap when pre-swap validation isn't needed
+- After a swap, the slot with previously staged app now has the previous production app
+- When you create a new slot the new deployment slot has no content, even if you clone the settings from a different slot
+- You can deploy to the slot from a different repository branch or a different repository
+- When the slot swap is triggered, this is what App Service does:
+  1. Apply the settings from the target slot (for example, the production slot) to all instances of the source slot
+     This triggers all instances in the source slot to restart
+  2. Wait for every instance in the source slot to complete its restart. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation
+  3. If local cache is enabled, trigger local cache initialization by making an HTTP request to the application root ("/")
+     on each instance of the source slot. Wait until each instance returns any HTTP response. 
+     Local cache initialization causes another restart on each instance
+  4. If auto swap is enabled with custom warm-up, trigger Application Initiation by making an HTTP request to the 
+     application root ("/") on each instance of the source slot
+  5. If all instances on the source slot are warmed up successfully, swap the two slots by switching the routing rules for 
+     the two slots. After this step, the target slot (for example, the production slot) has the app that's previously 
+     warmed up in the source slot
+  6. Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying 
+     all settings and restarting the instances.
+- To make settings swappable, add the app setting WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS in every slot
+  of the app and set its value to 0 or false.
+- Auto swap can be configured only on Windows machines
+
+## Route traffic in App Service
+- By default, all client requests to the app's production URL (http://<app_name>.azurewebsites.net) are routed to the production slot
+- You can route a portion of the traffic to another slot -> Deployment slots/Traffic
+- After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session
+  - search for the `x-ms-routing-name` cookie. This specifies the slot that the browser is pinned to
+
+![img_1.png](img_1.png)
