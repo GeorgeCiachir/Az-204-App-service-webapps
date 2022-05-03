@@ -15,7 +15,7 @@
 ## App Service plans - Types
 ### Non-isolated
 - **Shared compute**
-  - Both Free and Shared share the resource pools of your apps with the apps of other customers. 
+  - Both Free and Shared tiers share the resource pools of your apps with the apps of other customers. 
     Essentially, my app runs in the same VM with other apps from other clients
 - **Dedicated compute**
   - Basic (B1, B2, B3)
@@ -88,11 +88,11 @@
 - can enforce HTTPS and TLS versions
 
 ## Configure security certificates
-**Create a free App Service managed certificate** - A private certificate that's free of charge and easy to use if you just need to secure your custom domain in App Service.
-**Purchase/Import an App Service certificate**	- A private certificate that's managed by Azure. It combines the simplicity of automated certificate management and the flexibility of renewal and export options.
-**Import a certificate from Key Vault**	- Useful if you use Azure Key Vault to manage your certificates.
-**Upload a private certificate** - If you already have a private certificate from a third-party provider, you can upload it.
-**Upload a public certificate**	- Public certificates are not used to secure custom domains, but you can load them into your code if you need them to access remote resources.
+- **Create a free App Service managed certificate** - A private certificate that's free of charge and easy to use if you just need to secure your custom domain in App Service.
+- **Purchase/Import an App Service certificate**	- A private certificate that's managed by Azure. It combines the simplicity of automated certificate management and the flexibility of renewal and export options.
+- **Import a certificate from Key Vault**	- Useful if you use Azure Key Vault to manage your certificates.
+- **Upload a private certificate** - If you already have a private certificate from a third-party provider, you can upload it.
+- **Upload a public certificate**	- Public certificates are not used to secure custom domains, but you can load them into your code if you need them to access remote resources.
 
 ## Creating a free managed certificate
 - App Service plan must be in the Basic, Standard, Premium, or Isolated
@@ -126,7 +126,7 @@
 
 ## Metrics for autoscale rules
 - **The rules are evaluated across all instances**
-- **Consider defining autoscale rules in pairs in the same autoscale condition**- 
+- **Consider defining autoscale rules in pairs in the same autoscale condition**
 - **CPU Percentage** - This metric is an indication of the CPU utilization across all instances. A high value shows that instances are becoming CPU-bound, which could cause delays in processing client requests.
 - **Memory Percentage** - This metric captures the memory occupancy of the application across all instances. A high value indicates that free memory could be running low, and could cause one or more instances to fail.
 - **Disk Queue Length** - This metric is a measure of the number of outstanding I/O requests across all instances. A high value means that disk contention could be occurring.
@@ -136,8 +136,8 @@
 
 ## Combining autoscale rules
 - A single autoscale condition can contain several autoscale rules
-- When scaling out, the autoscale action will be performed if **any** of the scale-out rules are met. It works on an **or** basis
-- When scaling in, the autoscale action will run only if **all** of the scale-in rules are met. It works on an **and** basis
+- When scaling out, the autoscale action will be performed if **`any`** of the scale-out rules are met. It works on an **`or`** basis
+- When scaling in, the autoscale action will run only if **`all`** of the scale-in rules are met. It works on an **`and`** basis
 
 ## Explore staging environments
 - For Standard, Premium, or Isolated App Service plan tier
