@@ -40,11 +40,13 @@
   - If you enable diagnostic logs, perform backups, or run WebJobs, they also use CPU cycles and memory on these VM instances.
 
 ## Authentication and authorization in App Service
+- I created an Oauth2 security config, with Google as the provider, [**starting from this tutorial**](https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-google) 
 - not mandatory to be used
 - it is a separate module, that runs next to my deployment, and essentially acts like a proxy
 - supports major identity providers (AAD, Facebook, Google, Twitter, any OIDC provider)
 
 ## Authentication flow
+- I created an Oauth2 security config, with Google as the provider, [**starting from this tutorial**](https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-google)
 - **Without provider SDK**: The application delegates sign-in to App Service. This is typically the case with browser apps, which can present the provider's login page to the user. 
   The server code manages the sign-in process, so it is also called **server-directed flow** or **server flow**
 - **With provider SDK**: The application signs users in to the provider manually and then submits the authentication token to App Service for validation
