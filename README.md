@@ -40,6 +40,7 @@
   - If you enable diagnostic logs, perform backups, or run WebJobs, they also use CPU cycles and memory on these VM instances.
 
 ## Authentication and authorization in App Service
+- I created an Oauth2 security config, with Google as the provider, [**starting from this tutorial**](https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-google) 
 - not mandatory to be used
 - it is a separate module, that runs next to my deployment, and essentially acts like a proxy
 - supports major identity providers (AAD, Facebook, Google, Twitter, any OIDC provider)
